@@ -1,0 +1,22 @@
+#include <Wire.h>
+#include "rgb_lcd.h"
+rgb_lcd lcd;
+String incomingString = "";
+void setup() {
+  Serial.begin(115200);
+  lcd.begin(16, 2);
+  Serial.setTimeout(2);
+  lcd.print("Profit:");
+
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // read the incoming string:
+    String incomingString = Serial.readStringUntil('\n');
+    }
+
+
+  lcd.setCursor(0, 1);
+  lcd.print(incomingString);
+  delay(1000);}
